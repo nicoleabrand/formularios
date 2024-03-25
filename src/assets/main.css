@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+* {
+  margin: 0;
+  background-color: rgb(202, 196, 188);
+  font-family: "Wix Madefor Text", sans-serif;
+}
+
+#app{
+  padding: 10px;
+}
+input{
+  min-width: 400px;
+  height: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 0;
+  background-color: beige;
+  margin: 10px 0
+}
+input:hover {
+  border: 1px solid black;
+}
