@@ -11,6 +11,16 @@ const produto = reactive({
   categorias: []
 })
 
+const categorias=[
+{
+  id:1,
+  nome:'JOIAS'
+},
+{
+  id:2,
+  nome:'ELETROLUX'
+}]
+
 
 function formatarPreco(preco) {
   try {
@@ -42,20 +52,23 @@ function formatarPreco(preco) {
         <label for="">Estoque: </label>
         <input type="number" v-model="produto.estoque">
       </div>
+      <fieldset>
+        <legend>Categorias:</legend>
+        <div v-for="categoria in categorias" :key="categoria.id"><input type="checkbox" v-model="produto.categorias" :value= categoria.id /> {{categoria.nome}}</div>
+      </fieldset>
       <button @click="mostrarResultado = !mostrarResultado">Mostrar resultado</button>
-     
     </div>
     <Transition>
-    <div v-if="mostrarResultado" class="resultado">
-      <h2>Resultado</h2>
-      <h3> Dados do produto</h3>
-      <p>Nome: {{ produto.nome }}</p>
-      <p>Preco: {{ formatarPreco(produto.preco) }}</p>
-      <p>Estoque: {{ produto.estoque }}</p>
-      <p>Categorias: {{ produto.categorias }}</p>
-      <p> {{ mostrarResultado }}</p>
-    </div>
-  </Transition>
+      <div v-if="mostrarResultado" class="resultado">
+        <h2>Resultado</h2>
+        <h3> Dados do produto</h3>
+        <p>Nome: {{ produto.nome }}</p>
+        <p>Preco: {{ formatarPreco(produto.preco) }}</p>
+        <p>Estoque: {{ produto.estoque }}</p>
+        <p>Categorias: {{ produto.categorias }}</p>
+        <p> {{ mostrarResultado }}</p>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -85,17 +98,25 @@ function formatarPreco(preco) {
   background-color: aquamarine;
 }
 
-.row, p, h3 {
+.row,
+p,
+h3 {
   background-color: rgb(117, 180, 159)
 }
-.v-enter-active, .v-leave-active{
+
+.v-enter-active,
+.v-leave-active {
   transition: opacity 2s ease;
 }
-.v-enter-from{
+
+.v-enter-from {
   opacity: 0;
 }
-.v-enter-to{
-  opacity: 1;
- }
 
+.v-enter-to {
+  opacity: 1;
+}
+fieldset{
+padding: 30px;
+}
 </style>

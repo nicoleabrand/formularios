@@ -2,13 +2,13 @@
 * {
   margin: 0;
   background-color: rgb(202, 196, 188);
-  font-family: "Wix Madefor Text", sans-serif;
+  font-family: 'Wix Madefor Text', sans-serif;
 }
 
-#app{
+#app {
   padding: 10px;
 }
-input{
+input[type='text'] {
   min-width: 400px;
   height: 20px;
   border-radius: 10px;
@@ -16,7 +16,22 @@ input{
   font-size: 16px;
   border: 0;
   background-color: beige;
-  margin: 10px 0
+  margin: 10px 0;
+}
+input[type='number'] {
+  min-width: 400px;
+  height: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 0;
+  background-color: beige;
+  margin: 10px 0;
+}
+input[type='checkbox'] {
+  height: 20px;
+  width: 20px;
+  margin: 0 20px;
 }
 input:hover {
   border: 1px solid black;
