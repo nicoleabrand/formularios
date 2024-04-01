@@ -42,7 +42,7 @@ function formatarPreco(preco) {
       <hr />
       <div class="row">
         <label for="">Nome: </label>
-        <input type="text" v-model="produto.nome">
+        <input type="text" v-model="produto.nome" required>
       </div>
       <div class="row">
         <label for="">Preço: </label>
