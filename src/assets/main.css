@@ -4,7 +4,8 @@
   /* background-color: rgb(202, 196, 188); */
   font-family: 'Wix Madefor Text', sans-serif;
 }
-
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap';
 #app {
   padding: 10px;
   background-color: rgb(202, 196, 188);

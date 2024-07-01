@@ -6,7 +6,7 @@ const mostrarResultado = ref(false)
 
 const info = reactive({
   nome: '',
-  email: '',
+  email: '@',
   senha: 0,
   confisenha: 0,
   datanascimento: 0,
@@ -124,24 +124,80 @@ const estados = [
     nome: 'Tocantins'
   },
 ]
-
 const linguagensprog = [
   {
-    Nome: 'Python'
+    nome: 'Python'
   },
   {
-    Nome: 'JavaScript'
+    nome: 'JavaScript'
   },
+  {
+    nome: 'C++'
+  },
+  {
+    nome: 'Java'
+  },
+  {
+    nome: 'PHP'
+  }
 ]
 
-/*function formatarPreco(preco) {
-  try {
-    return `R$ ${preco.toFixed(2).replace(".", ",")}`
+function processarForm() {
+  if ((info.senha == info.confisenha) && info.email.includes("@")) {
+    mostrarResultado.value = !mostrarResultado.value
   }
-  catch (e) {
-    return `Invalido`
+}
+
+function formatarNome(nome) {
+  console.log(info.nome)
+  if (info.nome == "") {
+    return 'O campo não foi preenchido'
   }
-}*/
+  return info.nome
+}
+
+function formatarData(datanascimento) {
+  if (info.datanascimento == 0) {
+    return 'O campo não foi preenchido'
+  }
+  return info.datanascimento
+}
+
+function formatarSenha(senha) {
+  console.log(info.senha)
+  if (Array.from(info.senha).length < 4) {
+    return 'A senha precisa ter no mínimo 4 caracteres'
+  }
+  return info.senha
+}
+
+function formatarEndereco(endereco) {
+  if (info.endereco == "") {
+    return 'O campo não foi preenchido'
+  }
+  return info.endereco
+}
+
+function formatarHobbies(hobbies) {
+  if (info.hobbies == "") {
+    return 'O campo não foi preenchido'
+  }
+  return info.hobbies
+}
+
+function formatarBio(biografia) {
+  if (info.biografia == "") {
+    return 'O campo não foi preenchido'
+  }
+  return info.biografia
+}
+
+function formatarCidade(cidade) {
+  if (info.cidade == "") {
+    return 'O campo não foi preenchido'
+  }
+  return info.cidade
+}
 
 </script>
 
@@ -169,7 +225,7 @@ const linguagensprog = [
       </div>
       <div class="row">
         <label for="">Data de Nascimento: </label>
-        <input type="number" v-model="info.datanascimento">
+        <input type="date" v-model="info.datanascimento">
       </div>
       <div class="row">
         <label for="">Endereco: </label>
@@ -192,29 +248,41 @@ const linguagensprog = [
       </div>
       <fieldset>
         <legend>Linguagem de programação: </legend>
-        <input v-model="info.linguagemprog" v-for="linguagem in linguagensprog" :value="linguagensprog.nome" type="checkbox">{{ linguagem.nome }}>
+        <template v-for="linguagem in linguagensprog" :key="linguagem.nome">
+          <input v-model="info.linguagemprog" :value="linguagem.nome" type="checkbox">
+          {{ linguagem.nome }}
+        </template>
       </fieldset>
       <div class="row">
         <label for="">Biografia: </label>
         <input type="text" v-model="info.biografia">
       </div>
-      <button @click="mostrarResultado = !mostrarResultado">Mostrar resultado</button>
+      <button @click="processarForm">Mostrar resultado</button>
     </div>
-    <Transition>
-      <div v-if="mostrarResultado" class="resultado">
-        <h3>Perfil</h3>
-        <p>Nome: {{ info.nome }}</p>
-        <p>E-mail: {{ info.email }}</p>
-        <p>Senha: {{ info.senha }}</p>
-        <p>Data de Nascimento: {{ info.datanascimento }}</p>
-        <p>Endereço: {{ info.endereco }}</p>
-        <p>Cidade: {{ info.cidade }}</p>
-        <p>Estado: {{ info.estado }}</p>
-        <p>Hobbies: {{ info.hobbies }}</p>
-        <p>Linguagens de programação: {{ info.linguagemprog }}</p>
-        <p>Biografia: {{ info.biografia }}</p>
-      </div>
-    </Transition>
+    <!-- <Transition> -->
+    <!-- <template> -->
+
+    <div v-if="mostrarResultado" class="resultado">
+      <h3>Perfil</h3>
+      <p>Nome: {{ formatarNome(info.nome) }}</p>
+      <p>E-mail: {{ info.email }}</p>
+      <p>Senha: {{ formatarSenha(info.senha) }}</p>
+      <p>Data de Nascimento: {{ formatarData(info.datanascimento) }}</p>
+      <p>Endereço: {{ formatarEndereco(info.endereco)}}</p>
+      <p>Cidade: {{ formatarCidade(info.cidade) }}</p>
+      <p>Estado: {{ info.estado }}</p>
+      <p>Hobbies: {{ formatarHobbies(info.hobbies) }}</p>
+      <p>Linguagens de programação: {{ info.linguagemprog }}</p>
+      <p>Biografia: {{ formatarBio(info.biografia) }}</p>
+    </div>
+    <div v-if="info.confisenha != info.senha">
+      <p>O campo de confirmação de senha não corresponde ao campo senha.</p>
+    </div>
+    <div v-if="!info.email">
+      <p>O e-mail informado não é válido</p>
+    </div>
+    <!-- </template>
+    </Transition> -->
   </div>
 </template>
 
@@ -237,7 +305,7 @@ const linguagensprog = [
 
 .resultado,
 .resultado h2 {
-  background-color: aquamarine;
+  background-color: rgba(253, 253, 253, 0.514);
 }
 
 
