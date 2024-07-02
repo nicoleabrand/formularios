@@ -325,4 +325,9 @@ function formatarCidade(cidade) {
 fieldset {
   padding: 30px;
 }
+
+.row .resultado button{
+  background-color: white;
+  width: 300%;
+}
 </style>

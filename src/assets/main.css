@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
 * {
-  margin: 0;
   /* background-color: rgb(202, 196, 188); */
   font-family: 'Wix Madefor Text', sans-serif;
+}
+body{
+  margin: 0px
 }
 @import 'bootstrap/dist/css/bootstrap.css';
 @import 'bootstrap';
@@ -38,4 +40,24 @@ input[type='checkbox'] {
 }
 input:hover {
   border: 1px solid black;
+}
+input[type='date'] {
+  height: 20px;
+  margin: 0 20px;
+  background-color: beige;
+}
+select {
+  height: 20px;
+  margin: 0 20px;
+  background-color: beige;
+}
+button{
+  height: 50px;
+  margin: 20px 20px;
+  background-color: beige;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: large;
+  border-radius: 0px;
+  font-style:oblique;
+  padding: 5px 5px 5px 5px;
 }
