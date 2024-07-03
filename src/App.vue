@@ -6,7 +6,7 @@ const mostrarResultado = ref(false)
 
 const info = reactive({
   nome: '',
-  email: '@',
+  email: '',
   senha: 0,
   confisenha: 0,
   datanascimento: 0,
