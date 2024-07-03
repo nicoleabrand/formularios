@@ -20,7 +20,7 @@ input[type='text'] {
   padding: 10px;
   font-size: 16px;
   border: 0;
-  background-color: beige;
+  background-color: white;
   margin: 10px 0;
 }
 input[type='number'] {
@@ -30,13 +30,13 @@ input[type='number'] {
   padding: 10px;
   font-size: 16px;
   border: 0;
-  background-color: beige;
+  background-color: white;
   margin: 10px 0;
 }
 input[type='checkbox'] {
-  height: 20px;
-  width: 20px;
-  margin: 0 20px;
+  height: 70%;
+  width: 20%;
+  margin: 2%;
 }
 input:hover {
   border: 1px solid black;
@@ -44,20 +44,31 @@ input:hover {
 input[type='date'] {
   height: 20px;
   margin: 0 20px;
-  background-color: beige;
+  background-color: white;
 }
 select {
   height: 20px;
   margin: 0 20px;
-  background-color: beige;
+  background-color: white;
 }
 button{
   height: 50px;
   margin: 20px 20px;
-  background-color: beige;
+  background-color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: large;
   border-radius: 0px;
   font-style:oblique;
   padding: 5px 5px 5px 5px;
+}
+
+input[type='email'] {
+  min-width: 400px;
+  height: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 0;
+  background-color: white;
+  margin: 10px 0;
 }
