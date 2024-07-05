@@ -6,7 +6,7 @@ const mostrarResultado = ref(false)
 
 const info = reactive({
   nome: '',
-  email: '@',
+  email: '',
   senha: 0,
   confisenha: 0,
   datanascimento: 0,
@@ -163,14 +163,6 @@ function formatarData(datanascimento) {
   return info.datanascimento
 }
 
-function formatarSenha(senha) {
-  console.log(info.senha)
-  if (Array.from(info.senha).length < 4) {
-    return 'A senha precisa ter no mínimo 4 caracteres'
-  }
-  return info.senha
-}
-
 function formatarEndereco(endereco) {
   if (info.endereco == "") {
     return 'O campo não foi preenchido'
@@ -199,6 +191,21 @@ function formatarCidade(cidade) {
   return info.cidade
 }
 
+function formatarEstado(estado) {
+  if (!info.estado[0]) {
+    return 'O campo não foi selecionado'
+  }
+  return info.estado
+}
+
+function formatarLinguagem(linguagemprog) {
+  console.log(info.linguagemprog[0])
+  if (!info.linguagemprog[0]) {
+    return 'O campo não foi selecionado'
+  }
+  return info.linguagemprog
+}
+
 </script>
 
 <template>
@@ -209,11 +216,11 @@ function formatarCidade(cidade) {
       <hr />
       <div class="row">
         <label for="">Nome: </label>
-        <input type="text" v-model="info.nome" required>
+        <input type="text" v-model="info.nome">
       </div>
       <div class="row">
         <label for="">E-mail: </label>
-        <input type="text" v-model.number="info.email">
+        <input type="email" v-model.number="info.email">
       </div>
       <div class="row">
         <label for="">Senha: </label>
@@ -264,22 +271,45 @@ function formatarCidade(cidade) {
 
     <div v-if="mostrarResultado" class="resultado">
       <h3>Perfil</h3>
-      <p>Nome: {{ formatarNome(info.nome) }}</p>
-      <p>E-mail: {{ info.email }}</p>
-      <p>Senha: {{ formatarSenha(info.senha) }}</p>
-      <p>Data de Nascimento: {{ formatarData(info.datanascimento) }}</p>
-      <p>Endereço: {{ formatarEndereco(info.endereco) }}</p>
-      <p>Cidade: {{ formatarCidade(info.cidade) }}</p>
-      <p>Estado: {{ info.estado }}</p>
-      <p>Hobbies: {{ formatarHobbies(info.hobbies) }}</p>
-      <p>Linguagens de programação: {{ info.linguagemprog }}</p>
-      <p>Biografia: {{ formatarBio(info.biografia) }}</p>
-    </div>
-    <div v-if="info.confisenha != info.senha">
-      <p>O campo de confirmação de senha não corresponde ao campo senha.</p>
-    </div>
-    <div v-if="!info.email">
-      <p>O e-mail informado não é válido</p>
+      <p>Nome:
+      <div id="answer">{{ formatarNome(info.nome) }}</div>
+      </p>
+      <p>E-mail:
+      <div id="answer">{{ info.email }}</div>
+      </p>
+      <p>Data de Nascimento:
+      <div id="answer">{{ formatarData(info.datanascimento) }}</div>
+      </p>
+      <p>Endereço:
+      <div id="answer">{{ formatarEndereco(info.endereco) }}</div>
+      </p>
+      <p>Cidade:
+      <div id="answer">{{ formatarCidade(info.cidade) }}</div>
+      </p>
+      <p>Estado:
+      <div id="answer">{{ formatarEstado(info.estado) }}</div>
+      </p>
+      <p>Hobbies:
+      <div id="answer">{{ formatarHobbies(info.hobbies) }}</div>
+      </p>
+      <p>Linguagens de programação:
+      <div id="answer">{{ formatarLinguagem(info.linguagemprog) }}</div>
+      </p>
+      <p>Biografia:
+      <div id="answer">{{ formatarBio(info.biografia) }}</div>
+      </p>
+      <div style="color: red;" v-if="info.confisenha != info.senha">
+        <p>O campo de confirmação de senha não corresponde ao campo senha.</p>
+      </div>
+      <div style="color: red;" v-if="info.senha < 4">
+        <p>A senha precisa ter no mínimo 4 caracteres</p>
+      </div>
+      <div style="color: red;" v-if="!info.email">
+        <p>O e-mail informado não é válido</p>
+      </div>
+      <!--  if (Array.from(info.senha).length < 4) {
+    return 'A senha precisa ter no mínimo 4 caracteres'
+  } -->
     </div>
     <!-- </template>
     </Transition> -->
@@ -324,5 +354,15 @@ function formatarCidade(cidade) {
 
 fieldset {
   padding: 30px;
+}
+
+.row .resultado button {
+  background-color: white;
+  width: 300%;
+}
+
+#answer {
+  color: black;
+  font-weight: 500;
 }
 </style>
