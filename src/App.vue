@@ -217,11 +217,11 @@ function formatarCidade(cidade) {
       </div>
       <div class="row">
         <label for="">Senha: </label>
-        <input type="number" v-model="info.senha">
+        <input type="number" placeholder="Digite uma senha" v-model="info.senha">
       </div>
       <div class="row">
         <label for="">Confirmar Senha: </label>
-        <input type="number" v-model="info.confisenha">
+        <input type="number" placeholder="Confirme sua senha" v-model="info.confisenha">
       </div>
       <div class="row">
         <label for="">Data de Nascimento: </label>
@@ -268,7 +268,7 @@ function formatarCidade(cidade) {
       <p>E-mail: {{ info.email }}</p>
       <p>Senha: {{ formatarSenha(info.senha) }}</p>
       <p>Data de Nascimento: {{ formatarData(info.datanascimento) }}</p>
-      <p>Endereço: {{ formatarEndereco(info.endereco)}}</p>
+      <p>Endereço: {{ formatarEndereco(info.endereco) }}</p>
       <p>Cidade: {{ formatarCidade(info.cidade) }}</p>
       <p>Estado: {{ info.estado }}</p>
       <p>Hobbies: {{ formatarHobbies(info.hobbies) }}</p>
