@@ -1,17 +1,16 @@
+/* @import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap'; */
 @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
 * {
   /* background-color: rgb(202, 196, 188); */
   font-family: 'Wix Madefor Text', sans-serif;
 }
-body{
-  margin: 0px
+body {
+  margin: 0px;
 }
-@import 'bootstrap/dist/css/bootstrap.css';
-@import 'bootstrap';
 #app {
   padding: 10px;
   background-color: rgb(202, 196, 188);
-
 }
 input[type='text'] {
   min-width: 400px;
@@ -51,14 +50,14 @@ select {
   margin: 0 20px;
   background-color: white;
 }
-button{
+button {
   height: 50px;
   margin: 20px 20px;
   background-color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: large;
   border-radius: 0px;
-  font-style:oblique;
+  font-style: oblique;
   padding: 5px 5px 5px 5px;
 }
 
