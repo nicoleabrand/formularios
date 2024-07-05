@@ -12,7 +12,7 @@ const info = reactive({
   datanascimento: 0,
   endereco: '',
   cidade: '',
-  estado: [],
+  estado: '',
   hobbies: '',
   linguagemprog: [],
   biografia: ''
@@ -211,16 +211,16 @@ function formatarLinguagem(linguagemprog) {
 <template>
   <h1>{{ titulo }}</h1>
   <div class="container">
-    <div class="formulario">
+    <form class="formulario" @submit.prevent="processarForm">
       <h2>Formulário</h2>
       <hr />
       <div class="row">
         <label for="">Nome: </label>
-        <input type="text" v-model="info.nome">
+        <input type="text" placeholder="Digite seu nome" v-model="info.nome">
       </div>
       <div class="row">
         <label for="">E-mail: </label>
-        <input type="email" v-model.number="info.email">
+        <input type="email" placeholder="Digite seu e-mail" required v-model.number="info.email">
       </div>
       <div class="row">
         <label for="">Senha: </label>
@@ -236,22 +236,23 @@ function formatarLinguagem(linguagemprog) {
       </div>
       <div class="row">
         <label for="">Endereco: </label>
-        <input type="text" v-model="info.endereco">
+        <input type="text" placeholder="Informe seu endereço" v-model="info.endereco">
       </div>
       <div class="row">
         <label for="">Cidade: </label>
-        <input type="text" v-model="info.cidade">
+        <input type="text" placeholder="Informe sua cidade" v-model="info.cidade">
       </div>
       <div class="row">
         <label for="info.estado">Estado:</label>
         <select v-model="info.estado">
+          <option value="" disabled> Selecione um estado</option>
           <option v-for="estado in estados" :key="estado.sigla" :value="estado.nome">({{ estado.sigla }})
             {{ estado.nome }} </option>
         </select>
       </div>
       <div class="row">
         <label for="">Hobbies: </label>
-        <input type="text" v-model="info.hobbies">
+        <input type="text" placeholder="Digite seu(s) hobbie(s)" v-model="info.hobbies">
       </div>
       <fieldset>
         <legend>Linguagem de programação: </legend>
@@ -262,10 +263,10 @@ function formatarLinguagem(linguagemprog) {
       </fieldset>
       <div class="row">
         <label for="">Biografia: </label>
-        <input type="text" v-model="info.biografia">
+        <input type="text" placeholder="Digite sua biografia" v-model="info.biografia">
       </div>
-      <button @click="processarForm">Mostrar resultado</button>
-    </div>
+      <button type="submit">Mostrar resultado</button>
+    </form>
     <!-- <Transition> -->
     <!-- <template> -->
 
